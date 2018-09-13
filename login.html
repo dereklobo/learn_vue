@@ -116,7 +116,7 @@
 <div id="app">
     <form action="">  
     <button v-if="!loggedIn" v-on:click="logIn('James',$event)">Log in</button> 
-    <button v-else @click="logOut">Log out</button>        
+    <button v-else @click.prevent="logOut">Log out</button>        
     {{msg}}    
 </form>
 </div>

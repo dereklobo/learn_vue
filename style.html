@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+<div id="app">
+    <div :style="{border:'solid 2px black','margin-buttom':'30px',fontSize:myFontSize + 'px'}">
+        Style bind  bound
+    </div>
+
+    <div :style="fancyDiv">This is a fancy div</div>
+
+    <div :style="[fancyDiv,fancierDiv]">Apply multiple styles</div>
+</div>
+
+<script>
+    new Vue({
+       el: '#app',
+       data: {
+           myFontSize: 24,
+           fancyDiv:{
+               backgroundColor:'lightgrey',
+               borderRadius: '10px',
+               padding:'10px',
+               marginTop: '30px'
+           },
+           fancierDiv:{
+               border:'solid',
+               padding:'30px'
+           }
+       }
+    });
+</script>
