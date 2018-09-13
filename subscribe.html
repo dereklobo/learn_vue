@@ -119,7 +119,7 @@
 		<fieldset>
 			<legend>Interests</legend>
 			<div v-for="interest in interests">
-				<input type="checkbox"  v-model="selectedInterests" :value="interest"> {{interest}}
+				<input type="checkbox"  v-model="selectedInterests" :value="interest.id"> {{interest.name}}
 			</div>
 			
 		</fieldset>
@@ -136,7 +136,10 @@
 	   el: '#app',
 	   data: {
 		   email: '',
-           interests:['Running','Cycling','Swimming'],
+           interests:[{
+               id: 1,
+               name:'Running'
+           }],
            selectedInterests:[]
 	   }
 	});
