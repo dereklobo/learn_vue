@@ -126,6 +126,7 @@
         <input type="submit" value="Subscribe">
         <!-- You entered : {{email}} -->
         <p v-if="selectedInterests.length >0">You selected: {{selectedInterests.join(', ')}}</p>
+        <p v-else>Please select atleast one interest</p>
 	</form>
 </div>
 
