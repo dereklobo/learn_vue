@@ -1,15 +1,19 @@
 <!DOCTYPE html>
-
+<meta charset="utf-8">
 <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
 <div id="app">
+    <input type="number" v-model="myFontSize">
     <div :style="{border:'solid 2px black','margin-buttom':'30px',fontSize:myFontSize + 'px'}">
         Style bind  bound
     </div>
 
     <div :style="fancyDiv">This is a fancy div</div>
 
-    <div :style="[fancyDiv,fancierDiv]">Apply multiple styles</div>
+    <div :style="[fancyDiv,fancierDiv]" 
+    @mouseover="fancierDiv.border='dashed 1px blue'"
+    @mouseout="fancierDiv.border='solid 1px black'"
+    >Apply multiple styles</div>
 </div>
 
 <script>
