@@ -124,8 +124,8 @@
 			
 		</fieldset>
         <input type="submit" value="Subscribe">
-        You entered : {{email}}
-        You selected: {{selectedInterests.join(', ')}}
+        <!-- You entered : {{email}} -->
+        <p v-show="selectedInterests.length >0">You selected: {{selectedInterests.join(', ')}}</p>
 	</form>
 </div>
 
