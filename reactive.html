@@ -7,7 +7,7 @@
     <p>
         <!-- {{firstName}} {{lastName}} -->
         <input type="text" v-model="tempFarenheit">
-        <span>Temperature in celsius : {{tempCelsius}}</span>
+        <span>Temperature in celsius : {{tempCelsiusFunction()}}</span>
     </p>
 </div>
 
@@ -24,7 +24,12 @@
                 tempCelsius:function(){
                     return Math.round(5/9 * (this.tempFarenheit - 32));
                 }
-            }
+        },
+        methods:{
+                tempCelsiusFunction:function(){
+                    return Math.round(5/9 * (this.tempFarenheit - 32));
+                }
+        }
     });
 
     
