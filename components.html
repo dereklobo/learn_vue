@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+
+<div id="app">
+    See the component page
+    <global-component>
+        Can see the global
+    </global-component>
+    <local-component>
+
+    </local-component>
+</div>
+
+<script>
+    Vue.component('global-component',{
+        template: "<div>Replace the global component</div>"
+    });
+
+    var LocalComponent= {template:"<div> Check this local component</div>"};
+    new Vue({
+       el: '#app',
+       data: {
+           num: 42
+       },
+       components:{'local-component':LocalComponent}
+       //components:{ 'local-component': {template:"<div>This is a local component</div>"}}
+    });
+</script>
+
+<style>
+    div#app {
+        border: none;
+    }
+    div {
+        border: solid 2px black;
+        margin-bottom: 20px;
+        padding: 10px;
+    }
+</style>
