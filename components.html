@@ -17,7 +17,20 @@
         template: "<div>Replace the global component</div>"
     });
 
-    var LocalComponent= {template:"<div> Check this local component</div>"};
+    var LocalComponent= {template:"<div @click='showNum()'>\
+    Check this local component.The num::{{num}}\
+    </div>",
+    data:function(){
+        return {
+            num:Math.random()
+        };
+    },
+    methods:{
+        showNum: function(){
+            alert('The num is :'+this.num);
+        }
+    }
+    };
     new Vue({
        el: '#app',
        data: {
