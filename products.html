@@ -114,34 +114,61 @@
 <script type="text/javascript" src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
 
 <div id="app">
-    <product-list :products="theProducts" title="This is the display the product list"></product-list>
+    <!-- <product-list :products="theProducts" the-Title="This is the display the product list"></product-list> -->
+    <button v-if="listType=='product-list'" @click="listType='product-list-simple'"> Show less details</button>
+    <button v-else @click="listType='product-list'">Show More details</button>
+    <component :is="listType" :products="theProducts" the-Title="This is the display the product list"></component>
 </div>
 
 <script>
     Vue.component('product-list',{
     template:'<div class="product-list">\
-            {{title}}\
+            {{theTitle}}\
+            <ul>\
+            <product-list-items v-for="product in products" :product="product"></product-list-items>\
+            </ul>\
+            </div>',
+    props:['theTitle','products']
+    },
+    );
+
+    Vue.component('product-list-simple',{
+    template:'<div class="product-list">\
+            {{theTitle}}\
             <ul>\
             <li v-for="product in products">\
-            <img :src="product.image"> \
-            <p><strong>{{product.name}}</strong></p>\
-            <p>{{product.description}}</p>\
+            <img :src="product.image" class="small">{{product.name}}\
             </li>\
             </ul>\
             </div>',
-    props:['title','products']
+    props:['theTitle','products']
     },
-    
     );
+
+    Vue.component('product-list-items',{
+        template:'<li>\
+            <img :src="product.image"> \
+            <p><strong>{{product.name}}</strong></p>\
+            <p>{{product.description}}</p>\
+            </li>',
+        props:['product']
+    });
     var vm = new Vue({
         el: '#app',
         data: {
-            theProducts:[]
+            theProducts:[],
+            listType:'product-list'
         },
         created:function(){
+            makeData = [
+                {
+                'name':"Jeans",
+                'description':"The blue rough and tough to endure any weather"
+                },
+            ]
             $.getJSON('http://hplussport.com/api/products')
             .done(function(data){
-                console.log(data);
+                //console.log(data);
                 vm.theProducts = data;
             });
         }
@@ -162,6 +189,9 @@
     .product-list li {
         margin-bottom: 40px;
         clear: both;
+    }
+    .product-list img.small {
+        width:100px;
     }
 </style>
         
